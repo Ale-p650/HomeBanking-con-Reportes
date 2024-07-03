@@ -1,0 +1,27 @@
+﻿@model TipoCuenta
+
+@{
+    ViewData["Title"] = "Crear Tipo de Cuenta";
+}
+
+<h1>Crear Tipo de Cuenta</h1>
+<h5 class="fw-light" style="color: darkslategray">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet sagittis fermentum. </h5>
+
+<form asp-controller="TipoCuenta" asp-action="Crear" >
+    @* <div asp-validation-summary="All" class="text-danger">
+
+    </div> *@
+
+    <div class="mb-3">
+        <label asp-for="Nombre" class="form-label"></label>
+        <input type="text"  asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class=" text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+    <a asp-action="Index" class="btn btn-danger mx-2">Cancelar</a>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"/>
+}

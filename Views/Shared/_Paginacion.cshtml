@@ -1,0 +1,34 @@
+﻿@model PaginacionRespuesta
+
+@{
+    string plantillaLink = string.Concat(Model.BaseURL, "?pagina={0}&recordsPorPagina={1}");
+    bool activarBotonAnterior = Model.Pagina > 1;
+    bool activarBotonSiguiente = Model.Pagina < Model.CantidadPaginas;
+}
+
+
+<nav>
+    <ul class="pagination">
+
+        <li class="page-item @(activarBotonAnterior? null : "disabled")">
+            <a class="page-link" href="@string.Format(plantillaLink,Model.Pagina-1,Model.RecordsPorPagina)">
+                Anterior
+            </a>
+        </li>
+
+        @for (int i = 0; i < Model.CantidadPaginas; i++)
+        {
+            <li class="page-item @(i ==Model.Pagina? "active" : null)">
+                <a class="page-link" href="@string.Format(plantillaLink,i,Model.RecordsPorPagina)">
+                    @i
+                </a>
+            </li>
+        }
+
+        <li class="page-item @(activarBotonSiguiente? null : "disabled")">
+            <a class="page-link" href="@string.Format(plantillaLink,Model.Pagina-1,Model.RecordsPorPagina)">
+                Siguiente
+            </a>
+        </li>
+    </ul>
+</nav>
